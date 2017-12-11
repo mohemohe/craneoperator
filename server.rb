@@ -149,7 +149,7 @@ class CraneOp < Sinatra::Base
     redirect '/crane/'
   end
 
-  get /crane/api\/containers\/(.*\/)(.*)/ do |container, tag|
+  get /crane\/api\/containers\/(.*\/)(.*)/ do |container, tag|
 
     # This is here because we need to handle slashes in container names
     container.chop!
@@ -182,7 +182,7 @@ class CraneOp < Sinatra::Base
     info.to_json
   end
 
-  delete /crane/api\/containers\/(.*\/)(.*)/ do |container, tag|
+  delete /crane\/api\/containers\/(.*\/)(.*)/ do |container, tag|
     halt 404 unless to_bool(conf.delete_allowed)
 
     container.chop!
