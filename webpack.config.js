@@ -2,8 +2,8 @@ module.exports = {
   entry: "./app/App.js",
   output: {
     filename: "bundle.js",
-    path: __dirname + '/public',
-    publicPath: "/"
+    path: __dirname + '/public/crane',
+    publicPath: "/crane/"
   },
   devServer: {
     inline: true,
