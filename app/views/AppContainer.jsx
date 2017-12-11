@@ -45,9 +45,9 @@ export default class AppContainer extends React.Component {
 
           <div className="container">
             <Switch>
-              <Route exact path="/login" component={LoginView}/>
-              <Route path="/containers/:container_name*/" component={HomeView} registry={this.state.registry}/>
-              <Redirect from="/" to="/containers"/>
+              <Route exact path="/crane/login" component={LoginView}/>
+              <Route path="/crane/containers/:container_name*/" component={HomeView} registry={this.state.registry}/>
+              <Redirect from="/crane/" to="/crane/containers"/>
               <Route component={NotFound}/>
             </Switch>
           </div>

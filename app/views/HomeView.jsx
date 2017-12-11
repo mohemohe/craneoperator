@@ -123,7 +123,7 @@ export default class HomeView extends Component {
       if(tag){
         this.fetchImageInfo(this.state.container, tag)
         this.props.history.push({
-          pathname: ("/containers/" + this.state.container + "/tag/" + tag),
+          pathname: ("/crane/containers/" + this.state.container + "/tag/" + tag),
           search: this.props.location.search
         })
       }
@@ -176,7 +176,7 @@ export default class HomeView extends Component {
       })
       this.updateList()
       this.props.history.push({
-        pathname: "/containers/",
+        pathname: "/crane/containers/",
         search: queryString.stringify(s)
       })
 
@@ -191,7 +191,7 @@ export default class HomeView extends Component {
       })
       this.updateList()
       this.props.history.push({
-        pathname: "/containers/",
+        pathname: "/crane/containers/",
         search: queryString.stringify(s)
       })
     }
@@ -210,7 +210,7 @@ export default class HomeView extends Component {
       })
       this.fetchTagsList(this.state.container, event.target.value)
       this.props.history.push({
-        pathname: "/containers/" + this.state.container,
+        pathname: "/crane/containers/" + this.state.container,
         search: queryString.stringify(s)
       })
 
@@ -225,7 +225,7 @@ export default class HomeView extends Component {
       })
       this.fetchTagsList(this.state.container, event.target.value)
       this.props.history.push({
-        pathname: "/containers/" + this.state.container,
+        pathname: "/crane/containers/" + this.state.container,
         search: queryString.stringify(s)
       })
     }
@@ -245,7 +245,7 @@ export default class HomeView extends Component {
       image_info: undefined
     })
     this.props.history.push({
-        pathname: "/containers/" + container,
+        pathname: "/crane/containers/" + container,
         search: this.props.location.search
       })
   }
@@ -255,7 +255,7 @@ export default class HomeView extends Component {
       tag: tag
     })
     this.props.history.push({
-        pathname: "/containers/" + this.state.container + "/tag/" + tag,
+        pathname: "/crane/containers/" + this.state.container + "/tag/" + tag,
         search: this.props.location.search
       })
     this.fetchImageInfo(this.state.container, tag)

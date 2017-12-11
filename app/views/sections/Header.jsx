@@ -25,9 +25,9 @@ export default class Header extends React.Component {
       <div>
         <Navbar staticTop={true}>
           <Navbar.Header>
-            <img className='navbar-brand' src="/mini-logo.svg"/>
+            <img className='navbar-brand' src="/crane/mini-logo.svg"/>
               <Navbar.Brand>
-                <a href="/">{this.title()}</a>
+                <a href="/crane/">{this.title()}</a>
               </Navbar.Brand>
           </Navbar.Header>
           <Nav pullRight>

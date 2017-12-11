@@ -45,7 +45,7 @@ export default class ImageInfo extends React.Component {
   handleTagDelete(container, tag){
     DeleteTagAPI(container, tag)
     .then(function(){
-      window.location.assign("/containers/" + container + this.props.location.search)
+      window.location.assign("/crane/containers/" + container + this.props.location.search)
     }.bind(this))
   }
 

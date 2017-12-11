@@ -109,11 +109,11 @@ class CraneOp < Sinatra::Base
 
   ## Endpoints ##
 
-  get '/api' do
+  get '/crane/api' do
     return "API Version #{conf.version}"
   end
 
-  get '/api/containers' do
+  get '/crane/api/containers' do
     content_type :json
     repos = containers(params[:filter])
     if !repos.is_a?(Array)
@@ -122,14 +122,14 @@ class CraneOp < Sinatra::Base
     repos.to_json
   end
 
-  get '/api/tags/*' do |container|
+  get '/crane/api/tags/*' do |container|
     content_type :json
     tags = container_tags(container, params[:filter])
     halt 404 if tags.nil?
     tags.to_json
   end
 
-  post '/api/login' do
+  post '/crane/api/login' do
     content_type :json
     params = Oj.load(request.body.read)
     session.delete(:username)
@@ -144,9 +144,9 @@ class CraneOp < Sinatra::Base
     halt 401, {error: "credentials are wrong"}.to_json
   end
 
-  get '/logout' do
+  get '/crane/logout' do
     session.destroy
-    redirect '/'
+    redirect '/crane/'
   end
 
   get /api\/containers\/(.*\/)(.*)/ do |container, tag|
@@ -164,7 +164,7 @@ class CraneOp < Sinatra::Base
     info.to_json
   end
 
-  get '/api/registryinfo' do
+  get '/crane/api/registryinfo' do
     content_type :json
     info = {
       host: conf.registry_host,
@@ -193,11 +193,11 @@ class CraneOp < Sinatra::Base
 
   # React app endpoints
   [
-    "/containers/*",
-    "/containers",
-    "/login",
-    "/login/",
-    "/",
+    "/crane/containers/*",
+    "/crane/containers",
+    "/crane/login",
+    "/crane/login/",
+    "/crane/",
   ].each do |path|
     get path do
       erb :index, locals: { title: conf.title}
@@ -216,15 +216,15 @@ class CraneOp < Sinatra::Base
 
   # Debug endpoints
   if Configuration.new.debug
-    get '/api/session' do
+    get '/crane/api/session' do
       session.to_hash.to_json
     end
 
-    get '/api/config' do
+    get '/crane/api/config' do
       conf.to_hash.to_json
     end
 
-    get '/api/login' do
+    get '/crane/api/login' do
       content_type :json
       session.delete(:username)
       session.delete(:password)

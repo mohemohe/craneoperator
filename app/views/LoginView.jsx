@@ -28,7 +28,7 @@ export default class LoginView extends Component {
         error: undefined
       })
       // Have to force a window redirect here to ensure good login state display
-      window.location.assign('/');
+      window.location.assign('/crane/');
     }.bind(this))
     .catch(function(response){
       this.setState({
